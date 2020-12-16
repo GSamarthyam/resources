@@ -1,0 +1,226 @@
+https://github.com/GSamarthyam/compiler
+
+switch based on types 
+"needless null checks" -> missing abstraction 
+
+String value; // use this if NodeType is CONSTANT
+
+"Comments as deodorants"  
+
+"primitive obsession" 
+	-> using primitive types instead of first class abstractions 
+
+
+Procedural design in OO language 
+
+ExprNode  
+  ^			   
+  | --------------------	   ^ 	  
+  |			Constant 
+  |  
+PlusNode    MultNode  			
+
+
+java -jar DesigniteJava.jar -i “input files path” -o “output files path” 
+
+https://codescene.io/ 
+
+https://www.jarchitect.com/ 
+
+https://www.ndepend.com/ (C#) 
+
+
+• Introduction to Code Quality 
+	
+Not Functionality 
+NFRs in code (Non Functional Requirements) - externally or internally 
+
+Internally perceivable NFRs -> are these related to smells? 
+	-> Maintainable -> more effort in adding features and fixing bugs 	-> Extensibilty 
+	-> Testabilty -> Unit testability 
+	... 
+
+Externally relatable NFRs -> are these related to smells? 
+	-> Performance 
+	-> Security 
+	-> Realiability 
+	
+Design quality
+	-> internal qualities 
+	 
+• Functions and Issues around writing Functions / Methods 
+	
+• How to address the issues in Functions / Methods 
+• Function Sizes 
+	-> 10-15 lines 
+
+	-> Complexity less 
+		Cyclomatic Complexity -> 0-3    
+
+	-> nesting levels 
+		0-3 
+	
+What are the refactoring for reducing function size?  	
+	-> Extract method / function
+	-> Extract constant / variables 
+	-> Using lambdas and streams (FP style) 
+	-> Extracting classes 
+	-> Partial classes?  
+
+• Function Responsibilities 
+	-> Single responsibility principle 
+	-> Open Closed Principle 
+	
+Add unit tests easily 
+
+• Function Abstraction 
+	-> producdral design & functionaal decomposition 
+
+• Function Arguments 
+	-> Extracting parameters to make them reusable 
+	-> Base types instead of specific types to make them general 
+	-> 4 arguments 	
+
+	-> "Data clumps" 
+		-> Extract Data Clumps to Parameter Objects  
+
+• Exception Management 
+	-> implementation exceptions must be handled locally 
+	-> if not handleable locally, wrap the exceptions into higher level (runtime exceptions) and pass it back to the caller 
+ 
+• Error Handling 
+• Principles of Refactoring 
+	-> "Technical debt" 
+	-> shortcuts taken in the program -> speeds up the development process 
+		-> it slows down the maintenance process 
+
+	-> accrual of tech debt can even stall a project 
+	-> periodic refactoring -> repaying technical debt 
+					
+• Structural Complexity 
+	-> Function level -> CC
+	-> Class  
+		WMC -> Weighted methods per class -> Sum of CC / No. of methods -> 5 / 7 < 0	
+
+		5 + 6 + 24 + 4 .... 40 / 5 = WMC = 8 > 2 
+
+	-> Packages / Modules -> Fat 
+				 
+
+((10 * 20) + 30)
+
+var tree = ten.multipledBy(20).plus(30); 
+
+// ((10 * 20) + 30)
+
+// complex object creation smell 
+
+        Expr expr = new Expr(
+                new Expr(
+                        new Expr(null, "10", null), "*", new Expr(null, "20", null)),
+                "+",
+                new Expr(null, "30", null));
+
+// step 1 - introduce abstractions 
+ExprNode tree = new AddNode(
+            new MultNode(new Constant(10), new Constant(20)),
+            new Constant(30)
+        );
+
+// step 1 - introduce factory method & flyweight pattern  
+ExprNode tree = AddNode.make(
+            MultNode.make(Constant.make(10), Constant.make(20)),
+            Constant.make(30)
+        );
+
+// step 2 - fluent interfaces 
+// ((10 * 20) + 30)
+var ten = Constant.make(10); 
+var tree = ten.multipledBy(20).plus(30); 
+
+
+
+switch based on byte code type 
+
+procedural design 
+
+lazy class 
+
+inappropriate intimacy 
+	=> unrestrained encapsulation 
+
+ArrayList<ByteCode> byteCodes = 
+	{ new ILOAD(10), 
+	  new ILOAD(20) 	
+	  new IMUL(), 
+	  new ILOAD(30), 
+           new IADD()
+	}; 	 	
+
+
+
+1 bad - 5 really good 
+
+vivek - 4 
+
+identify code smells 
+unit testable code is effective design 
+names of the design problems 
+ 
+sushanth - 4 
+
+patterns and their proper usage 
+different types of smells -> code, design, arch 
+	-> differentiating between the smells 
+new tools for better architecting and design 
+
+sourav - 3.5
+
+new tools 
+useful relating to code, arch smells 
+procedural to OO way of programming 
+was aware of patterns, but different ways of applying 
+
+sandip - 4 or 5 
+
+more modularisation != bad performance 
+ide shortcuts -> for productivity 
+
+nagavendra - 4 
+
+usage of patterns -> more procedural code 
+	-> avoid code smells 
+	-> help refactor existing code 
+tools -> but paid/commercial tools, so won't be 
+	able to use... 
+analyse it yourselves 
+hands on was good 
+ide shortcuts -> switch to IntelliJ 
+3 days of course would be better 
+
+sudeshna - 4 
+
+code smells identification 
+patterns & solid principles 
+refactoring importance 
+tools are useful 
+c# also equally applicable 
+useful for code reviews 
+useful for architect position 
+
+kk - 4 
+
+practical exercises were helpful
+ide shortcuts is useful 
+learned identifying smells, way to apply, 
+	where to apply patterns, reduce complexity, 
+	
+kameswari - 4
+
+shortcuts were useful -> improves productivity 
+learnt concepts like smells, naming smells, etc 
+good learning 
+tools for analysing, finding smells, code quality 
+
+chandra - 4.5 
+
